@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import register from '../components/assets/register.webp'
+import { registerUser } from '../Slices/authSlice'
+import { useDispatch } from 'react-redux'
 
 
 const Register = () => {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const disPatch = useDispatch()
     
     const handleSubmit = (e) => { 
         e.preventDefault()
-        console.log("User registerred" , {name , email , password})
+        disPatch(registerUser({name, email, password}))
      }
     return (
         <div className='flex'>
